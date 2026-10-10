@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0">
 <title>🇵🇹 葡萄牙4日游 · 旅行手册</title>
+<!-- Leaflet 地图CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <style>
 :root{
 --bg:#faf6f0;--card:#fff;--text:#2c3e50;--muted:#8a9ba8;--accent:#1a5276;--border:#e8ddd0;--shadow:0 2px 12px rgba(0,0,0,.06);
@@ -77,6 +79,8 @@ main{padding:12px}
 .warn-list li:last-child{border-bottom:none}
 .theme-btn{position:fixed;bottom:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--card);font-size:1.2rem;cursor:pointer;box-shadow:var(--shadow);z-index:99}
 footer{text-align:center;padding:20px;font-size:.8rem;color:var(--muted)}
+/* 真实Leaflet地图样式 */
+#realMap{width:100%;height:420px;border-radius:10px;border:1px solid var(--border);}
 </style>
 </head>
 <body>
@@ -97,7 +101,7 @@ footer{text-align:center;padding:20px;font-size:.8rem;color:var(--muted)}
 <div class="cd-times" id="cdTimes"></div>
 </section>
 <section class="card">
-<h2>🗺️ 行程总览</h2>
+<h2>🗺️ 行程总览（手绘示意图）</h2>
 <div class="map-wrap">
 <svg viewBox="0 0 480 380" class="map-svg" id="overviewMap">
 <path d="M0,380 L0,300 Q40,295 90,298 Q140,302 190,308 Q240,315 290,322 Q340,330 390,338 Q440,345 480,350 L480,380 Z" fill="var(--water)" opacity=".4" stroke="var(--water)" stroke-width="1" stroke-dasharray="3,2"/>
@@ -116,6 +120,12 @@ footer{text-align:center;padding:20px;font-size:.8rem;color:var(--muted)}
 <span><span class="dot" style="background:var(--d3)"></span>第3天 辛特拉</span>
 <span><span class="dot" style="background:var(--d4)"></span>第4天 返程</span>
 </div>
+</section>
+<!-- ========== 新增真实地图卡片 ========== -->
+<section class="card">
+<h2>🌍 真实地理地图（可缩放，看街道）</h2>
+<div id="realMap"></div>
+<p style="font-size:0.75rem;color:var(--muted);margin-top:8px">点击标记点，可打开谷歌地图导航</p>
 </section>
 <section class="card">
 <h2>📋 已确认预订</h2>
@@ -179,6 +189,8 @@ footer{text-align:center;padding:20px;font-size:.8rem;color:var(--muted)}
 </main>
 <footer>🇵🇹 祝旅途愉快！</footer>
 <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 var LOC = {
 airport:{n:'里斯本机场',lat:38.7813,lng:-9.1359,x:425,y:95},
@@ -341,6 +353,21 @@ function generateMiniMap(day){
 function buildTodo(){var ul=document.getElementById('todoList');TODO.forEach(function(item){var li=document.createElement('li');if(item.done)li.className='done';li.innerHTML='<span>'+(item.done?'✅':'⬜')+'</span><span>'+item.text+'</span>';ul.appendChild(li);});}
 function checkTheme(){var h=new Date().getUTCHours();var isNight=(h<6||h>=18);if(isNight){document.body.classList.add('night');document.getElementById('themeBtn').textContent='☀️';}else{document.body.classList.remove('night');document.getElementById('themeBtn').textContent='🌙';}}
 function toggleTheme(){document.body.classList.toggle('night');document.getElementById('themeBtn').textContent=document.body.classList.contains('night')?'☀️':'🌙';}
+
+// ========== Leaflet真实地图初始化代码 ==========
+let realMap = L.map('realMap').setView([38.72, -9.22], 9);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(realMap);
+
+// 遍历所有点位添加标记
+Object.keys(LOC).forEach(key=>{
+    const point = LOC[key];
+    const marker = L.marker([point.lat, point.lng]).addTo(realMap);
+    const navLink = `https://www.google.com/maps/dir/?api=1&destination=${point.lat},${point.lng}`;
+    marker.bindPopup(`<b>${point.n}</b><br><a target="_blank" href="${navLink}">🧭 点击导航</a>`);
+});
+
 drawMapDots();buildItinerary();buildTodo();updateCountdown();checkTheme();setInterval(updateCountdown,1000);setInterval(checkTheme,600000);
 </script>
 </body>
