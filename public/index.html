@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0">
+<title>🇵🇹 葡萄牙4日游 · 旅行手册</title>
+<style>
+:root{
+--bg:#faf6f0;--card:#fff;--text:#2c3e50;--muted:#8a9ba8;--accent:#1a5276;--border:#e8ddd0;--shadow:0 2px 12px rgba(0,0,0,.06);
+--d1:#e67e22;--d2:#2980b9;--d3:#27ae60;--d4:#e74c3c;--link:#3498db;--warn-bg:#fff5e6;--warn-border:#f0c36d;
+--water:#a8d8ea;--land:#f5ead6;
+}
+body.night{
+--bg:#131320;--card:#1c1c2e;--text:#d4d8e0;--muted:#6c7a8a;--accent:#5dade2;--border:#2a2a40;--shadow:0 2px 12px rgba(0,0,0,.3);
+--water:#1a3a5c;--land:#2a2a3e;--link:#5dade2;--warn-bg:#2a2535;--warn-border:#5a4a6a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);transition:background .4s,color .4s;line-height:1.6;max-width:640px;margin:0 auto;min-height:100vh}
+header{text-align:center;padding:28px 16px 12px;background:linear-gradient(135deg,#1a5276,#2980b9);color:#fff;border-radius:0 0 20px 20px}
+header h1{font-size:1.5rem;letter-spacing:2px}
+header p{font-size:.85rem;opacity:.85;margin-top:4px}
+main{padding:12px}
+.card{background:var(--card);border-radius:14px;padding:18px 16px;margin-bottom:14px;box-shadow:var(--shadow);border:1px solid var(--border);transition:background .4s,border-color .4s}
+.card h2{font-size:1.1rem;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.cd-event{font-size:1.05rem;font-weight:600;color:var(--accent);margin-bottom:10px;text-align:center}
+.cd-display{display:flex;justify-content:center;gap:6px;flex-wrap:wrap}
+.cd-unit{display:flex;flex-direction:column;align-items:center;background:var(--bg);border-radius:10px;padding:8px 10px;min-width:62px;border:1px solid var(--border)}
+.cd-num{font-size:2rem;font-weight:800;font-variant-numeric:tabular-nums;color:var(--accent);line-height:1}
+.cd-label{font-size:.7rem;color:var(--muted);margin-top:2px}
+.cd-times{text-align:center;margin-top:10px;font-size:.78rem;color:var(--muted)}
+.cd-times strong{color:var(--text)}
+.map-wrap{overflow:hidden;border-radius:10px;border:1px solid var(--border)}
+.map-svg{width:100%;height:auto;display:block}
+.legend{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;justify-content:center}
+.legend span{display:flex;align-items:center;gap:4px;font-size:.78rem;color:var(--muted)}
+.legend .dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.bk{border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:10px}
+.bk h3{font-size:.95rem;margin-bottom:8px}
+.bk-row{display:flex;justify-content:space-between;font-size:.82rem;padding:4px 0;border-top:1px dashed var(--border)}
+.bk-row:first-of-type{border-top:none}
+.bk-row .lbl{color:var(--muted)}
+.pending{color:var(--muted);font-size:.85rem;font-style:italic;padding:4px 0}
+.day-sec{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.day-hd{padding:10px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:.95rem}
+.day-hd .arrow{transition:transform .3s}
+.day-hd.open .arrow{transform:rotate(180deg)}
+.day-body{display:none;padding:0 14px 14px}
+.day-body.open{display:block}
+.day-warn{background:var(--warn-bg);border:1px solid var(--warn-border);border-radius:8px;padding:6px 10px;font-size:.78rem;margin:8px 0;color:var(--text)}
+.day-actions{display:flex;gap:8px;margin:8px 0}
+.btn{font-size:.8rem;padding:6px 12px;border-radius:8px;border:1px solid var(--accent);background:transparent;color:var(--accent);text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--accent);color:var(--card)}
+.day-map-mini{margin:8px 0;border-radius:8px;overflow:hidden;border:1px solid var(--border);display:none}
+.day-map-mini.show{display:block}
+.day-map-mini svg{width:100%;height:auto}
+.tl{position:relative;padding-left:74px;margin-top:6px}
+.tl::before{content:'';position:absolute;left:64px;top:4px;bottom:4px;width:2px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:14px}
+.tl-time{position:absolute;left:-74px;width:60px;text-align:right;font-weight:700;font-size:.82rem;color:var(--accent)}
+.tl-time .tz{font-size:.65rem;color:var(--muted);font-weight:400}
+.tl-cont{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:8px 12px}
+.tl-cont h4{font-size:.88rem;margin-bottom:2px}
+.tl-cont p{font-size:.78rem;color:var(--muted)}
+.tl-cont .loc-link{display:inline-block;margin-top:4px;font-size:.78rem;color:var(--link);text-decoration:none;border-bottom:1px dashed var(--link)}
+.badge{display:inline-block;font-size:.7rem;padding:1px 6px;border-radius:4px;background:#e74c3c;color:#fff;margin-left:4px;vertical-align:middle}
+.todo{list-style:none}
+.todo li{padding:8px 0;border-bottom:1px dashed var(--border);font-size:.88rem;display:flex;align-items:center;gap:8px}
+.todo li:last-child{border-bottom:none}
+.todo .done{opacity:.5;text-decoration:line-through}
+.tips{list-style:none}
+.tips li{padding:6px 0;border-bottom:1px dashed var(--border);font-size:.85rem}
+.tips li:last-child{border-bottom:none}
+.tips strong{color:var(--accent)}
+.warn-card{border-color:var(--warn-border);background:var(--warn-bg)}
+.warn-list{list-style:none}
+.warn-list li{padding:6px 0;font-size:.83rem;border-bottom:1px dashed var(--warn-border)}
+.warn-list li:last-child{border-bottom:none}
+.theme-btn{position:fixed;bottom:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--card);font-size:1.2rem;cursor:pointer;box-shadow:var(--shadow);z-index:99}
+footer{text-align:center;padding:20px;font-size:.8rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+<h1>🇵🇹 葡萄牙4日游</h1>
+<p>11月22日 — 11月25日 · 4人同行</p>
+</header>
+<main>
+<section class="card">
+<h2>⏰ 此刻关注</h2>
+<div class="cd-event" id="cdEvent">加载中…</div>
+<div class="cd-display">
+<div class="cd-unit"><span class="cd-num" id="cdD">--</span><span class="cd-label">天</span></div>
+<div class="cd-unit"><span class="cd-num" id="cdH">--</span><span class="cd-label">时</span></div>
+<div class="cd-unit"><span class="cd-num" id="cdM">--</span><span class="cd-label">分</span></div>
+<div class="cd-unit"><span class="cd-num" id="cdS">--</span><span class="cd-label">秒</span></div>
+</div>
+<div class="cd-times" id="cdTimes"></div>
+</section>
+<section class="card">
+<h2>🗺️ 行程总览</h2>
+<div class="map-wrap">
+<svg viewBox="0 0 480 380" class="map-svg" id="overviewMap">
+<path d="M0,380 L0,300 Q40,295 90,298 Q140,302 190,308 Q240,315 290,322 Q340,330 390,338 Q440,345 480,350 L480,380 Z" fill="var(--water)" opacity=".4" stroke="var(--water)" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="180" y="365" font-size="9" fill="var(--muted)" font-style="italic">Rio Tejo · 特茹河</text>
+<text x="20" y="375" font-size="8" fill="var(--muted)" font-style="italic">大西洋</text>
+<path d="M425,95 Q415,160 395,235" stroke="var(--d1)" stroke-width="2.5" stroke-dasharray="6,4" fill="none" stroke-linecap="round"/>
+<path d="M300,305 L295,300 L302,302 L275,320 L400,255 L415,240 L405,232 L408,220 L380,230" stroke="var(--d2)" stroke-width="2.5" stroke-dasharray="6,4" fill="none" stroke-linecap="round" opacity=".8"/>
+<path d="M395,235 Q250,150 60,55 L45,85 L52,75 L42,62 Q250,150 395,235" stroke="var(--d3)" stroke-width="2.5" stroke-dasharray="6,4" fill="none" stroke-linecap="round" opacity=".8"/>
+<path d="M395,235 Q415,160 425,95" stroke="var(--d4)" stroke-width="2.5" stroke-dasharray="6,4" fill="none" stroke-linecap="round" opacity=".7"/>
+<g id="mapDots"></g>
+</svg>
+</div>
+<div class="legend">
+<span><span class="dot" style="background:var(--d1)"></span>第1天 抵达</span>
+<span><span class="dot" style="background:var(--d2)"></span>第2天 市区</span>
+<span><span class="dot" style="background:var(--d3)"></span>第3天 辛特拉</span>
+<span><span class="dot" style="background:var(--d4)"></span>第4天 返程</span>
+</div>
+</section>
+<section class="card">
+<h2>📋 已确认预订</h2>
+<div class="bk">
+<h3>✈️ 机票</h3>
+<div class="bk-row"><span class="lbl">去程</span><span>BGY → LIS · 11/22 12:30→15:05 · 直达约3h</span></div>
+<div class="bk-row"><span class="lbl">回程</span><span>LIS → BGY · 11/25 14:30→18:55 · 直达约2h50m</span></div>
+<div class="bk-row"><span class="lbl">航司/航班号</span><span>待补充（请发截图）</span></div>
+</div>
+<div class="bk">
+<h3>🏨 酒店</h3>
+<p class="pending">待补充 — 请发送酒店预订截图，我会提取名称、地址、电话</p>
+</div>
+<div class="bk">
+<h3>🚗 租车</h3>
+<p class="pending">待补充 — 如需自驾请发租车信息；辛特拉也可坐火车（约40min）</p>
+</div>
+<div class="bk">
+<h3>🎫 门票</h3>
+<p class="pending">待补充 — 请发送已订门票截图</p>
+</div>
+</section>
+<section class="card">
+<h2>📅 逐日行程</h2>
+<p style="font-size:.8rem;color:var(--muted);margin-bottom:10px">点击日期展开/收起 · 每个地点可点击导航</p>
+<div id="itinerary"></div>
+</section>
+<section class="card">
+<h2>✅ 待办清单</h2>
+<p style="font-size:.78rem;color:var(--muted);margin-bottom:8px">办完一项告诉我，我来改页面。不设勾选框，保证所有人看到的内容一致。</p>
+<ul class="todo" id="todoList"></ul>
+</section>
+<section class="card">
+<h2>💡 实用贴士</h2>
+<ul class="tips">
+<li>🕐 <strong>时差</strong>：葡萄牙 WET (UTC+0)，比意大利晚1小时。页面所有时间已标注时区。</li>
+<li>💶 <strong>货币</strong>：欧元 €，建议带少量现金，大部分地方可刷卡</li>
+<li>🌧️ <strong>天气</strong>：11月平均 12-18°C，多雨，带伞和外套</li>
+<li>🚇 <strong>市区交通</strong>：地铁/电车/公交，可买 Viva Viagem 卡或 Lisboa Card（含交通+景点）</li>
+<li>🚂 <strong>辛特拉</strong>：Rossio 站坐火车约40分钟，建议8:30前出发避人流</li>
+<li>🍽️ <strong>美食</strong>：葡式海鲜饭、蛋挞(Pastéis)、波特酒、烤沙丁鱼</li>
+<li>💰 <strong>小费</strong>：5-10%，非必须</li>
+<li>🔌 <strong>插座</strong>：欧标 Type F，230V（与意大利相同）</li>
+<li>📞 <strong>紧急电话</strong>：112</li>
+<li>👟 <strong>步行</strong>：里斯本多坡道台阶，穿舒适步行鞋</li>
+<li>🆓 <strong>免费</strong>：大部分观景台(Miradouros)免费</li>
+<li>📅 <strong>日照</strong>：11月日出约7:15，日落约17:30，合理安排户外时间</li>
+<li>🚕 <strong>机场→市区</strong>：地铁红线约35min，出租车/Uber约15-20min €10-15</li>
+</ul>
+</section>
+<section class="card warn-card">
+<h2>⚠️ 注意事项</h2>
+<ul class="warn-list">
+<li><strong>11/23 周一博物馆闭馆</strong> — 里斯本大部分博物馆（含热罗尼莫斯修道院）周一闭馆。已将博物馆调至周二/周三，周一只安排户外景点。</li>
+<li><strong>佩纳宫需提前购票</strong> — 11月非旺季但建议网上提前买票，避免现场排队</li>
+<li><strong>酒店/租车/门票待补充</strong> — 收到截图后更新页面</li>
+<li><strong>辛特拉交通</strong> — 建议火车前往；如自驾注意山路窄、停车难</li>
+<li><strong>飞行时间核对</strong> — 去程12:30 CET→15:05 WET，考虑1h时差实际飞行约3.5h；回程14:30 WET→18:55 CET同理。请以机票为准。</li>
+</ul>
+</section>
+</main>
+<footer>🇵🇹 祝旅途愉快！</footer>
+<button class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+<script>
+var LOC = {
+airport:{n:'里斯本机场',lat:38.7813,lng:-9.1359,x:425,y:95},
+chiado:{n:'希亚多',lat:38.7137,lng:-9.1420,x:388,y:235},
+comercio:{n:'商业广场',lat:38.7075,lng:-9.1360,x:400,y:255},
+pasteis:{n:'Pastéis de Belém',lat:38.6969,lng:-9.2030,x:302,y:302},
+belemTower:{n:'贝伦塔',lat:38.6916,lng:-9.2156,x:275,y:320},
+discoveries:{n:'发现者纪念碑',lat:38.6935,lng:-9.2054,x:292,y:310},
+jeronimos:{n:'热罗尼莫斯修道院',lat:38.6976,lng:-9.2059,x:295,y:300},
+alfama:{n:'阿尔法玛',lat:38.7120,lng:-9.1290,x:415,y:240},
+castle:{n:'圣若热城堡',lat:38.7138,lng:-9.1334,x:405,y:232},
+miradouro:{n:'恩格拉观景台',lat:38.7176,lng:-9.1325,x:408,y:220},
+bairroAlto:{n:'上城区',lat:38.7140,lng:-9.1470,x:380,y:230},
+rossio:{n:'Rossio火车站',lat:38.7145,lng:-9.1393,x:393,y:232},
+sintra:{n:'辛特拉',lat:38.8029,lng:-9.3817,x:60,y:55},
+pena:{n:'佩纳宫',lat:38.7896,lng:-9.3906,x:45,y:85},
+moorish:{n:'摩尔人城堡',lat:38.7936,lng:-9.3857,x:52,y:75},
+regaleira:{n:'雷加莱拉庄园',lat:38.7979,lng:-9.3920,x:42,y:62},
+};
+var EVENTS=[
+{label:'出发！贝加莫 → 里斯本',utc:'2026-11-22T11:30:00Z',local:'11/22 12:30',tz:'CET (UTC+1)'},
+{label:'抵达里斯本机场',utc:'2026-11-22T15:05:00Z',local:'11/22 15:05',tz:'WET (UTC+0)'},
+{label:'第2天出发 · 贝伦区',utc:'2026-11-23T09:00:00Z',local:'11/23 09:00',tz:'WET (UTC+0)'},
+{label:'第3天出发 · 辛特拉',utc:'2026-11-24T08:30:00Z',local:'11/24 08:30',tz:'WET (UTC+0)'},
+{label:'返程 · 里斯本 → 贝加莫',utc:'2026-11-25T14:30:00Z',local:'11/25 14:30',tz:'WET (UTC+0)'},
+{label:'抵达贝加莫 · 旅行结束',utc:'2026-11-25T17:55:00Z',local:'11/25 18:55',tz:'CET (UTC+1)'},
+];
+var DAYS=[
+{day:1,date:'11月22日',dow:'周日',title:'抵达里斯本',color:'#e67e22',warn:null,
+ items:[
+ {t:'12:30',tz:'CET',title:'出发 BGY → LIS',loc:null,desc:'贝加莫机场起飞'},
+ {t:'15:05',tz:'WET',title:'抵达里斯本机场',loc:'airport',desc:'取行李后前往市区'},
+ {t:'16:30',tz:'WET',title:'酒店办理入住',loc:null,desc:'酒店待定 — 请发截图',book:false},
+ {t:'17:00',tz:'WET',title:'希亚多(Chiado)漫步',loc:'chiado',desc:'里斯本最优雅的街区'},
+ {t:'18:00',tz:'WET',title:'商业广场看日落',loc:'comercio',desc:'面向特茹河，日落绝佳'},
+ {t:'19:30',tz:'WET',title:'欢迎晚餐',loc:null,desc:'推荐 Time Out Market 美食广场'},
+ ],
+ stay:'住宿：待定'},
+{day:2,date:'11月23日',dow:'周一',title:'里斯本市区',color:'#2980b9',
+ warn:'⚠️ 周一博物馆闭馆 — 今天只安排户外景点和开放场所',
+ items:[
+ {t:'09:00',tz:'WET',title:'出发前往贝伦区',loc:'pasteis',desc:'地铁/电车前往贝伦'},
+ {t:'09:30',tz:'WET',title:'Pastéis de Belém',loc:'pasteis',desc:'百年蛋挞老店，建议早到避排队'},
+ {t:'10:15',tz:'WET',title:'贝伦塔',loc:'belemTower',desc:'世界遗产，户外纪念碑'},
+ {t:'11:15',tz:'WET',title:'发现者纪念碑',loc:'discoveries',desc:'登顶可俯瞰贝伦区'},
+ {t:'12:00',tz:'WET',title:'贝伦滨水散步',loc:null,desc:'沿特茹河岸步行'},
+ {t:'13:00',tz:'WET',title:'午餐',loc:null,desc:'贝伦区或返回市区'},
+ {t:'14:00',tz:'WET',title:'阿尔法玛老城步行',loc:'alfama',desc:'里斯本最古老的街区，迷宫般小巷'},
+ {t:'15:30',tz:'WET',title:'圣若热城堡',loc:'castle',desc:'最高点俯瞰全城',book:true},
+ {t:'17:00',tz:'WET',title:'恩格拉观景台',loc:'miradouro',desc:'看日落最佳位置之一'},
+ {t:'19:00',tz:'WET',title:'上城区晚餐 + 法多',loc:'bairroAlto',desc:'听葡萄牙传统法多音乐'},
+ ],
+ stay:'住宿：待定'},
+{day:3,date:'11月24日',dow:'周二',title:'辛特拉一日游',color:'#27ae60',warn:null,
+ items:[
+ {t:'08:30',tz:'WET',title:'Rossio火车站出发',loc:'rossio',desc:'火车约40分钟到辛特拉'},
+ {t:'09:15',tz:'WET',title:'抵达辛特拉',loc:'sintra',desc:'出站后可步行或坐434路公交上山'},
+ {t:'09:30',tz:'WET',title:'佩纳宫',loc:'pena',desc:'色彩缤纷的浪漫主义宫殿',book:true},
+ {t:'12:00',tz:'WET',title:'摩尔人城堡',loc:'moorish',desc:'8世纪城堡遗址，步行可达佩纳宫'},
+ {t:'13:00',tz:'WET',title:'辛特拉老城午餐',loc:'sintra',desc:'推荐当地海鲜'},
+ {t:'14:30',tz:'WET',title:'雷加莱拉庄园',loc:'regaleira',desc:'神秘花园和井塔',book:true},
+ {t:'16:30',tz:'WET',title:'返回里斯本',loc:null,desc:'火车回Rossio站'},
+ {t:'19:00',tz:'WET',title:'里斯本晚餐',loc:null,desc:'轻松收尾'},
+ ],
+ stay:'住宿：待定'},
+{day:4,date:'11月25日',dow:'周三',title:'返程',color:'#e74c3c',warn:null,
+ items:[
+ {t:'09:00',tz:'WET',title:'热罗尼莫斯修道院',loc:'jeronimos',desc:'周一闭馆，今天开放',book:true},
+ {t:'10:30',tz:'WET',title:'最后购物/咖啡',loc:null,desc:'买伴手礼'},
+ {t:'11:30',tz:'WET',title:'前往机场',loc:'airport',desc:'提前2.5h到机场'},
+ {t:'14:30',tz:'WET',title:'出发 LIS → BGY',loc:'airport',desc:'里斯本起飞'},
+ {t:'18:55',tz:'CET',title:'抵达贝加莫',loc:null,desc:'旅行结束，平安回家！'},
+ ],
+ stay:'今日返程，不住宿'},
+];
+var TODO=[
+{text:'✈️ 机票已出票',done:true},
+{text:'🏨 预订酒店',done:false},
+{text:'🚗 确认是否租车（辛特拉可坐火车）',done:false},
+{text:'🎫 预订佩纳宫门票',done:false},
+{text:'🎫 预订雷加莱拉庄园门票',done:false},
+{text:'🎫 预订圣若热城堡门票（可选）',done:false},
+{text:'🎫 预订热罗尼莫斯修道院门票',done:false},
+{text:'📱 购买 eSIM 或电话卡',done:false},
+{text:'💱 准备欧元现金',done:false},
+{text:'🔌 确认欧标转换插头（与意大利相同）',done:false},
+{text:'🧳 打包行李（带伞、舒适步行鞋）',done:false},
+{text:'💊 准备常用药',done:false},
+{text:'📋 保存本页离线（手机打开后可离线查看）',done:false},
+];
+function mapsUrl(loc){
+ if(!loc||!LOC[loc])return '#';
+ var l=LOC[loc];
+ return 'https://www.google.com/maps/dir/?api=1&destination='+l.lat+','+l.lng;
+}
+function dayNavUrl(day){
+ var locs=[];
+ day.items.forEach(function(it){if(it.loc&&LOC[it.loc])locs.push(LOC[it.loc]);});
+ if(locs.length<2)return '#';
+ var o=locs[0],d=locs[locs.length-1],wp=[];
+ for(var i=1;i<locs.length-1;i++)wp.push(locs[i].lat+','+locs[i].lng);
+ var u='https://www.google.com/maps/dir/?api=1&origin='+o.lat+','+o.lng+'&destination='+d.lat+','+d.lng;
+ if(wp.length)u+='&waypoints='+wp.join('|');
+ u+='&travelmode=transit';
+ return u;
+}
+function updateCountdown(){
+ var now=Date.now();
+ var ev=null;
+ for(var i=0;i<EVENTS.length;i++){if(new Date(EVENTS[i].utc).getTime()>now){ev=EVENTS[i];break;}}
+ if(!ev){document.getElementById('cdEvent').textContent='🎉 旅行已结束，平安回家！';document.getElementById('cdD').textContent='00';document.getElementById('cdH').textContent='00';document.getElementById('cdM').textContent='00';document.getElementById('cdS').textContent='00';document.getElementById('cdTimes').innerHTML='';return;}
+ var diff=new Date(ev.utc).getTime()-now;
+ var d=Math.floor(diff/86400000);var h=Math.floor(diff%86400000/3600000);var m=Math.floor(diff%3600000/60000);var s=Math.floor(diff%60000/1000);
+ document.getElementById('cdEvent').textContent=ev.label;
+ document.getElementById('cdD').textContent=String(d).padStart(2,'0');
+ document.getElementById('cdH').textContent=String(h).padStart(2,'0');
+ document.getElementById('cdM').textContent=String(m).padStart(2,'0');
+ document.getElementById('cdS').textContent=String(s).padStart(2,'0');
+ var userTime=new Date(ev.utc).toLocaleString('zh-CN',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',timeZoneName:'short'});
+ document.getElementById('cdTimes').innerHTML='当地时间：<strong>'+ev.local+' '+ev.tz+'</strong><br>你的时间：'+userTime;
+}
+function drawMapDots(){
+ var g=document.getElementById('mapDots');if(!g)return;
+ var dots=[{k:'airport',c:'#e74c3c',label:'机场'},{k:'chiado',c:'#1a5276',label:'希亚多'},{k:'comercio',c:'#1a5276',label:'商业广场'},{k:'pasteis',c:'#2980b9',label:'蛋挞店'},{k:'belemTower',c:'#2980b9',label:'贝伦塔'},{k:'discoveries',c:'#2980b9',label:'发现者纪念碑'},{k:'jeronimos',c:'#e74c3c',label:'修道院'},{k:'alfama',c:'#2980b9',label:'阿尔法玛'},{k:'castle',c:'#2980b9',label:'城堡'},{k:'miradouro',c:'#2980b9',label:'观景台'},{k:'bairroAlto',c:'#2980b9',label:'上城区'},{k:'rossio',c:'#27ae60',label:'Rossio站'},{k:'sintra',c:'#27ae60',label:'辛特拉'},{k:'pena',c:'#27ae60',label:'佩纳宫'},{k:'moorish',c:'#27ae60',label:'摩尔人城堡'},{k:'regaleira',c:'#27ae60',label:'雷加莱拉'}];
+ dots.forEach(function(d){var l=LOC[d.k];if(!l)return;var ns='http://www.w3.org/2000/svg';var circle=document.createElementNS(ns,'circle');circle.setAttribute('cx',l.x);circle.setAttribute('cy',l.y);circle.setAttribute('r',4.5);circle.setAttribute('fill',d.c);circle.setAttribute('stroke','#fff');circle.setAttribute('stroke-width','1');g.appendChild(circle);var text=document.createElementNS(ns,'text');text.setAttribute('x',l.x+7);text.setAttribute('y',l.y+3);text.setAttribute('font-size','7.5');text.setAttribute('fill','var(--text)');text.textContent=d.label;g.appendChild(text);});
+}
+function buildItinerary(){
+ var container=document.getElementById('itinerary');
+ DAYS.forEach(function(day){
+  var sec=document.createElement('div');sec.className='day-sec';
+  var hd=document.createElement('div');hd.className='day-hd';hd.style.borderLeft='4px solid '+day.color;
+  hd.innerHTML='<span>第'+day.day+'天 · '+day.date+' '+day.dow+' · '+day.title+'</span><span class="arrow">▼</span>';
+  var body=document.createElement('div');body.className='day-body';
+  if(day.warn){var w=document.createElement('div');w.className='day-warn';w.textContent=day.warn;body.appendChild(w);}
+  var act=document.createElement('div');act.className='day-actions';
+  var mapBtn=document.createElement('button');mapBtn.className='btn';mapBtn.textContent='📍 展开路线图';
+  var navLink=document.createElement('a');navLink.className='btn';navLink.href=dayNavUrl(day);navLink.target='_blank';navLink.textContent='🧭 一键导航全天';
+  act.appendChild(mapBtn);act.appendChild(navLink);body.appendChild(act);
+  var miniMap=document.createElement('div');miniMap.className='day-map-mini';miniMap.innerHTML=generateMiniMap(day);body.appendChild(miniMap);
+  mapBtn.onclick=function(){miniMap.classList.toggle('show');mapBtn.textContent=miniMap.classList.contains('show')?'📍 收起路线图':'📍 展开路线图';};
+  var tl=document.createElement('div');tl.className='tl';
+  day.items.forEach(function(it){var item=document.createElement('div');item.className='tl-item';var time=document.createElement('div');time.className='tl-time';time.innerHTML=it.t+'<br><span class="tz">'+it.tz+'</span>';var cont=document.createElement('div');cont.className='tl-cont';var h4=document.createElement('h4');h4.textContent=it.title;if(it.book){var b=document.createElement('span');b.className='badge';b.textContent='需提前订';h4.appendChild(b);}var p=document.createElement('p');p.textContent=it.desc;cont.appendChild(h4);cont.appendChild(p);if(it.loc&&LOC[it.loc]){var link=document.createElement('a');link.className='loc-link';link.href=mapsUrl(it.loc);link.target='_blank';link.textContent='📍 导航至'+LOC[it.loc].n;cont.appendChild(link);}item.appendChild(time);item.appendChild(cont);tl.appendChild(item);});
+  body.appendChild(tl);
+  var stay=document.createElement('p');stay.style.cssText='font-size:.82rem;color:var(--muted);margin-top:10px;padding:6px 10px;background:var(--bg);border-radius:8px';stay.textContent='🛏️ '+day.stay;body.appendChild(stay);
+  hd.onclick=function(){body.classList.toggle('open');hd.classList.toggle('open');};
+  sec.appendChild(hd);sec.appendChild(body);container.appendChild(sec);
+ });
+}
+function generateMiniMap(day){
+ var locs=[];day.items.forEach(function(it){if(it.loc&&LOC[it.loc])locs.push(LOC[it.loc]);});
+ if(locs.length<1)return '<p style="font-size:.8rem;color:var(--muted);padding:8px">暂无地点坐标</p>';
+ var xs=locs.map(function(l){return l.x;});var ys=locs.map(function(l){return l.y;});
+ var minX=Math.min.apply(null,xs)-30,maxX=Math.max.apply(null,xs)+30,minY=Math.min.apply(null,ys)-25,maxY=Math.max.apply(null,ys)+25;
+ var w=maxX-minX,h=maxY-minY;var pts=locs.map(function(l){return (l.x-minX)+','+(l.y-minY);});var pathStr='M'+pts.join(' L');
+ var svg='<svg viewBox="0 0 '+w+' '+h+'" style="background:var(--bg)">';
+ svg+='<path d="'+pathStr+'" stroke="'+day.color+'" stroke-width="2" stroke-dasharray="5,3" fill="none" stroke-linecap="round"/>';
+ locs.forEach(function(l,i){svg+='<circle cx="'+(l.x-minX)+'" cy="'+(l.y-minY)+'" r="5" fill="'+day.color+'" stroke="#fff" stroke-width="1.5"/>';svg+='<text x="'+(l.x-minX+8)+'" y="'+(l.y-minY+3)+'" font-size="8" fill="var(--text)">'+l.n+'</text>';});
+ svg+='</svg>';return svg;
+}
+function buildTodo(){var ul=document.getElementById('todoList');TODO.forEach(function(item){var li=document.createElement('li');if(item.done)li.className='done';li.innerHTML='<span>'+(item.done?'✅':'⬜')+'</span><span>'+item.text+'</span>';ul.appendChild(li);});}
+function checkTheme(){var h=new Date().getUTCHours();var isNight=(h<6||h>=18);if(isNight){document.body.classList.add('night');document.getElementById('themeBtn').textContent='☀️';}else{document.body.classList.remove('night');document.getElementById('themeBtn').textContent='🌙';}}
+function toggleTheme(){document.body.classList.toggle('night');document.getElementById('themeBtn').textContent=document.body.classList.contains('night')?'☀️':'🌙';}
+drawMapDots();buildItinerary();buildTodo();updateCountdown();checkTheme();setInterval(updateCountdown,1000);setInterval(checkTheme,600000);
+</script>
+</body>
+</html>
